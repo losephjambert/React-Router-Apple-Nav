@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { mainNavItems, subNavItems } from '../api/navDataStub';
+import { mainNavItems, subNavItems } from '../../api/navDataStub';
 
 export default function NavContainer() {
   const [navItems, setNavItems] = useState(mainNavItems);
-  const [subNavItemDisplay, setSubNavItemDisplay] = useState();
 
   return (
     <ul>
