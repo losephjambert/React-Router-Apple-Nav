@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-import NavContainer from './components/Nav/NavContainer';
+import HomePage from './components/HomePage';
 import Page from './components/Page';
 
 import { mainNavItems as main, subNavItems as sub } from './api/navDataStub';
@@ -10,20 +10,25 @@ function App() {
   const [subNavItems, setSubNavItems] = useState(sub);
   const [mainNavItems] = useState(main);
 
-  // const onNavChange = id => {
-  //   setSubNavItems(sub.find(items => items.id === id) || []);
-  // };
-
   return (
     <>
       <Route
         exact
         path='/'
-        render={routerProps => <NavContainer mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />}
+        render={routerProps => (
+          <HomePage title={'home'} mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />
+        )}
       />
       <Route
         path='/:url'
-        render={routerProps => <NavContainer mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />}
+        render={routerProps => (
+          <Page
+            mainNavItems={mainNavItems}
+            subNavItems={subNavItems}
+            {...routerProps}
+            title={routerProps.match.params.url}
+          />
+        )}
       />
     </>
   );
