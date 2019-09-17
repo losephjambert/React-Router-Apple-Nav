@@ -9,11 +9,7 @@ export default function NavContainer({ mainNavItems, subNavItems, match }) {
   const items = subNavItems.find(item => item.url.toLowerCase() === url);
   return (
     <>
-      <nav>
-        <ul>
-          <MainNav items={mainNavItems} />
-        </ul>
-      </nav>
+      <MainNav items={mainNavItems} />
       {items && (
         <nav>
           <Route path={`/${url}`} render={() => <SubNav items={items.items} />} />
