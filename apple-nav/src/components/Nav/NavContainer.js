@@ -11,11 +11,7 @@ export default function NavContainer({ mainNavItems, subNavItems, match }) {
     <>
       <nav>
         <ul>
-          {mainNavItems.map(({ title, url, id }) => (
-            <li key={`_${id}_`}>
-              <Link to={url.toLowerCase()}>{title}</Link>
-            </li>
-          ))}
+          <MainNav items={mainNavItems} />
         </ul>
       </nav>
       {items && (
