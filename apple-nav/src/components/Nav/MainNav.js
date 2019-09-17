@@ -1,19 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledNav = styled.nav`
+  a {
+    color: grey;
+    text-decoration: none;
+    &.active {
+      color: green !important;
+    }
+    &:visited {
+      color: grey;
+    }
+  }
+`;
 
 const MainNav = ({ items }) => {
   return (
     <>
-      <nav>
-        <ul>
-          {items.map((item, i) => (
-            <li key={`_${i}_`}>
-              {' '}
-              <Link to={item.url.toLowerCase()}>{item.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <StyledNav>
+        {items.map((item, i) => (
+          <NavLink exact key={`_${i}_`} activeClassName='active' to={item.url.toLowerCase()}>
+            {item.title}
+          </NavLink>
+        ))}
+      </StyledNav>
     </>
   );
 };

@@ -1,13 +1,21 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const SubNav = ({ items }) => {
+const SubNav = ({ items, url }) => {
   return (
     <>
-      <ul>
-        {items.map((item, i) => (
-          <li key={`_${i}_`}>{item.title}</li>
-        ))}
-      </ul>
+      {items.map((item, i) => (
+        <NavLink
+          to={`/${url}/${item.title
+            .toLowerCase()
+            .split(' ')
+            .join('-')}`}
+          exact
+          activeClassName='active'
+          key={`_${i}_`}>
+          {item.title}
+        </NavLink>
+      ))}
     </>
   );
 };

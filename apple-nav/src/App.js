@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
 import Page from './components/Page';
@@ -12,24 +12,38 @@ function App() {
 
   return (
     <>
-      <Route
-        exact
-        path='/'
-        render={routerProps => (
-          <HomePage title={'home'} mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />
-        )}
-      />
-      <Route
-        path='/:url'
-        render={routerProps => (
-          <Page
-            mainNavItems={mainNavItems}
-            subNavItems={subNavItems}
-            {...routerProps}
-            title={routerProps.match.params.url}
-          />
-        )}
-      />
+      <Switch>
+        <Route
+          exact
+          path='/'
+          render={routerProps => (
+            <HomePage title={'home'} mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />
+          )}
+        />
+        <Route
+          exact
+          path='/:url'
+          render={routerProps => (
+            <Page
+              mainNavItems={mainNavItems}
+              subNavItems={subNavItems}
+              {...routerProps}
+              title={routerProps.match.params.url}
+            />
+          )}
+        />
+        <Route
+          path='/:url/:type'
+          render={routerProps => (
+            <Page
+              mainNavItems={mainNavItems}
+              subNavItems={subNavItems}
+              {...routerProps}
+              title={routerProps.match.params.type}
+            />
+          )}
+        />
+      </Switch>
     </>
   );
 }
