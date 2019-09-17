@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import NavContainer from './components/Nav/NavContainer';
-import SubNav from './components/Nav/SubNavContainer';
 
-import { mainNavItems, subNavItems } from './api/navDataStub';
+import { mainNavItems as main, subNavItems as sub } from './api/navDataStub';
 
 function App() {
-  const [subNav, setSubNav] = useState([]);
-  const [navItems] = useState(mainNavItems);
+  const [subNavItems, setSubNavItems] = useState(sub);
+  const [mainNavItems] = useState(main);
 
-  const onNavChange = title => {
-    setSubNav(subNavItems[title] || []);
-  };
+  // const onNavChange = id => {
+  //   setSubNavItems(sub.find(items => items.id === id) || []);
+  // };
 
   return (
     <>
-      <NavContainer navItems={navItems} onNavChange={onNavChange} subNav={subNav} />
+      <Route
+        exact
+        path='/'
+        render={routerProps => <NavContainer mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />}
+      />
+      <Route
+        path='/:url'
+        render={routerProps => <NavContainer mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />}
+      />
     </>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SubNavContainer = ({ subNav }) => {
+const MainNav = ({ items }) => {
   return (
     <>
       <ul>
-        {subNav.map((item, i) => (
+        {items.map((item, i) => (
           <li key={`_${i}_`}>{item.title}</li>
         ))}
       </ul>
@@ -12,4 +12,4 @@ const SubNavContainer = ({ subNav }) => {
   );
 };
 
-export default SubNavContainer;
+export default MainNav;

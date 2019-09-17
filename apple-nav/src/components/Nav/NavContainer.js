@@ -1,21 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Link } from 'react-router-dom';
-import SubNavContainer from './SubNavContainer';
+import SubNav from './SubNav';
+import MainNav from './MainNav';
 
-export default function NavContainer({ navItems, onNavChange, subNav }) {
+export default function NavContainer({ mainNavItems, subNavItems, match }) {
+  const { url } = match.params;
+  const items = subNavItems.find(item => item.url.toLowerCase() === url);
+  console.log(items);
   return (
     <>
       <nav>
         <ul>
-          {navItems.map(({ title, href }, i) => (
-            <li key={`_${i}_`} onClick={() => onNavChange(title)}>
-              <Link to={href.toLowerCase()}>{title}</Link>
+          {mainNavItems.map(({ title, url, id }) => (
+            <li key={`_${id}_`}>
+              <Link to={url.toLowerCase()}>{title}</Link>
             </li>
           ))}
         </ul>
       </nav>
-      {subNav && <SubNavContainer subNav={subNav} />}
+      <nav>
+        {/* <Route path={} render={() => <SubNavContainer subNav={subNav}/>}/> */}
+        {/* {subNav && <SubNavContainer subNav={subNav} />} */}
+      </nav>
     </>
   );
 }
