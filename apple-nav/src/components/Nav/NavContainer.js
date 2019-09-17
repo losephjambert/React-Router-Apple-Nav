@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Route, NavLink } from 'react-router-dom';
 import SubNav from './SubNav';
-import MainNav from './MainNav';
 
 export default function NavContainer({ mainNavItems, subNavItems, match }) {
   const { url } = match.params;

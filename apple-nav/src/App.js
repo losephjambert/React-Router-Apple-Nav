@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
 import Page from './components/Page';
+import NavContainer from './components/Nav/NavContainer';
 
 import { mainNavItems as main, subNavItems as sub } from './api/navDataStub';
 
@@ -39,7 +40,7 @@ function App() {
               mainNavItems={mainNavItems}
               subNavItems={subNavItems}
               {...routerProps}
-              title={routerProps.match.params.type}
+              title={`${routerProps.match.params.url}: ${routerProps.match.params.type}`}
             />
           )}
         />
