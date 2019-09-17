@@ -7,7 +7,6 @@ import MainNav from './MainNav';
 export default function NavContainer({ mainNavItems, subNavItems, match }) {
   const { url } = match.params;
   const items = subNavItems.find(item => item.url.toLowerCase() === url);
-  console.log(items);
   return (
     <>
       <nav>
@@ -19,10 +18,11 @@ export default function NavContainer({ mainNavItems, subNavItems, match }) {
           ))}
         </ul>
       </nav>
-      <nav>
-        {/* <Route path={} render={() => <SubNavContainer subNav={subNav}/>}/> */}
-        {/* {subNav && <SubNavContainer subNav={subNav} />} */}
-      </nav>
+      {items && (
+        <nav>
+          <Route path={`/${url}`} render={() => <SubNav items={items.items} />} />
+        </nav>
+      )}
     </>
   );
 }

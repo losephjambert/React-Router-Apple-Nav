@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import NavContainer from './components/Nav/NavContainer';
+import Page from './components/Page';
 
 import { mainNavItems as main, subNavItems as sub } from './api/navDataStub';
 

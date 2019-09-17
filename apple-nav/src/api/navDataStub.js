@@ -13,7 +13,7 @@ export const subNavItems = [
   {
     id: 1,
     url: 'Mac',
-    Mac: [
+    items: [
       { title: 'MacBook Air' },
       { title: 'MacBook Pro' },
       { title: 'iMac' },
@@ -29,7 +29,7 @@ export const subNavItems = [
   {
     id: 2,
     url: 'iPad',
-    iPad: [
+    items: [
       { title: 'iPad Air' },
       { title: 'iPad Pro' },
       { title: 'iPad' },
@@ -44,7 +44,7 @@ export const subNavItems = [
   {
     id: 3,
     url: 'iPhone',
-    iPhone: [
+    items: [
       { title: 'iPhone 11 Pro' },
       { title: 'iPhone 11' },
       { title: 'iPhone Xr' },
@@ -59,7 +59,7 @@ export const subNavItems = [
   {
     id: 4,
     url: 'Watch',
-    Watch: [
+    items: [
       { title: 'Apple Watch Series 5' },
       { title: 'Apple Watch Nike' },
       { title: 'Apple Watch Hermes' },
@@ -75,7 +75,7 @@ export const subNavItems = [
   {
     id: 5,
     url: 'TV',
-    TV: [
+    items: [
       { title: 'Apple TV App' },
       { title: 'Apple TV+' },
       { title: 'Apple TV 4K' },
@@ -87,7 +87,7 @@ export const subNavItems = [
   {
     id: 6,
     url: 'Music',
-    Music: [
+    items: [
       { title: 'Apple Music' },
       { title: 'Homepod' },
       { title: 'Airpods' },
