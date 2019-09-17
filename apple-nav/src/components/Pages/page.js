@@ -1,14 +1,14 @@
 import React from 'react';
 import SubNav from '../Nav/SubNav';
 
-const Page = props => {
+const Page = ({ subNav, match, title }) => {
   return (
     <>
       <nav>
-        <SubNav />
+        <SubNav subNav={subNav} />
       </nav>
       <section>
-        <h1>This is the page title: TITLE</h1>
+        <h1>This is the page title: {title}</h1>
         <p>this is some page content</p>
       </section>
     </>

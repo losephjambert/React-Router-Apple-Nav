@@ -5,21 +5,23 @@ import NavContainer from './components/Nav/NavContainer';
 import Page from './components/Pages/page';
 import HomePage from './components/Pages/HomePage';
 
-import { subNavItems } from './api/navDataStub';
+import { mainNavItems, subNavItems } from './api/navDataStub';
 
 function App() {
-  const [subNavItems, setSubNavItems] = useState([]);
+  const [subNav, setSubNav] = useState([]);
+  const [navItems, setNavItems] = useState(mainNavItems);
 
   const onNavChange = title => {
-    subNavItems[title] ? setSubNavItems(subNavItems[title]) : setSubNavItems([]);
+    setSubNav(subNavItems[title]);
   };
+
   return (
     <>
-      <NavContainer />
+      <NavContainer navItems={navItems} onNavChange={onNavChange} />
       <Route exact path='/' component={HomePage} />
       <Route
         path='/:id'
-        render={routerProps => <Page {...routerProps} subNavItems={subNavItems} onNavChange={onNavChange} />}
+        render={routerProps => <Page {...routerProps} title={routerProps.match.params.id} subNav={subNav} />}
       />
     </>
   );

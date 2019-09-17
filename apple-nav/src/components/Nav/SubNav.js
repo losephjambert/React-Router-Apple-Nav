@@ -1,18 +1,15 @@
 import React from 'react';
 
-const SubNav = props => {
+const SubNav = ({ subNav }) => {
   return (
     <>
-      <ul>
-        <li>item</li>
-        <li>item</li>
-        <li>item</li>
-        <li>item</li>
-        <li>item</li>
-        <li>item</li>
-        <li>item</li>
-        <li>item</li>
-      </ul>
+      {subNav && (
+        <ul>
+          {subNav.map((item, i) => (
+            <li key={`_${i}_`}>{item.title}</li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };

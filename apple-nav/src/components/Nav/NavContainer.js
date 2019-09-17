@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { mainNavItems, subNavItems } from '../../api/navDataStub';
-
-export default function NavContainer() {
-  const [navItems, setNavItems] = useState(mainNavItems);
-
+export default function NavContainer({ navItems, onNavChange }) {
   return (
     <ul>
       {navItems.map(({ title, href }, i) => (
-        <li key={`_${i}_`}>
+        <li key={`_${i}_`} onClick={() => onNavChange(title)}>
           <Link to={href.toLowerCase()}>{title}</Link>
         </li>
       ))}
