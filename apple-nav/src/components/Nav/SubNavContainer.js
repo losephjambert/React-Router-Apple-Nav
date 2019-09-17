@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SubNav = ({ subNav }) => {
+const SubNavContainer = ({ subNav }) => {
   return (
     <>
       <ul>
@@ -12,4 +12,4 @@ const SubNav = ({ subNav }) => {
   );
 };
 
-export default SubNav;
+export default SubNavContainer;
