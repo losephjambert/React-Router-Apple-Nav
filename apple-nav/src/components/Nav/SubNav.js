@@ -28,15 +28,17 @@ const StyledSubNavIconWrapper = styled.div`
 `;
 const StyledSubNavText = styled.div``;
 
-const SubNav = ({ navItems, url }) => {
+const SubNav = ({ navItems, url, match }) => {
   if (!navItems) return null;
+
+  console.log(match.params);
 
   return (
     <StyledSubNav>
       <StyledNavWrapper>
         {navItems.items.map((item, i) => (
           <NavLink
-            to={`/${url}/${item.title
+            to={`/${url.toLowerCase()}/${item.title
               .toLowerCase()
               .split(' ')
               .join('-')}`}

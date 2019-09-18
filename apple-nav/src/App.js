@@ -40,53 +40,55 @@ function App() {
   const [mainNavItems] = useState(main);
 
   return (
-    <Route
-      render={({ location }) => (
-        <>
-          <MainNav mainNavItems={mainNavItems} />
-          <TransitionGroup>
-            <CSSTransition timeout={300} classNames={'fade'} key={location.key}>
-              <Switch>
-                <Route
-                  exact
-                  path='/'
-                  render={() => (
-                    <StyledRouteWrapper>
-                      <Page title={'home'} />
-                    </StyledRouteWrapper>
-                  )}
-                />
-                <Route
-                  exact
-                  path='/:url'
-                  render={routerProps => (
-                    <StyledRouteWrapper>
-                      <SubNav
-                        navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
-                        url={routerProps.match.params.url}
-                      />
-                      <Page title={routerProps.match.params.url} />
-                    </StyledRouteWrapper>
-                  )}
-                />
-                <Route
-                  path='/:url/:type'
-                  render={routerProps => (
-                    <StyledRouteWrapper>
-                      <SubNav
-                        navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
-                        url={routerProps.match.params.url}
-                      />
-                      <Page title={`${routerProps.match.params.url}: ${routerProps.match.params.type}`} />
-                    </StyledRouteWrapper>
-                  )}
-                />
-              </Switch>
-            </CSSTransition>
-          </TransitionGroup>
-        </>
-      )}
-    />
+    <>
+      <MainNav mainNavItems={mainNavItems} subNavItems={subNavItems} />
+      <Route
+        exact
+        path='/'
+        render={() => (
+          <StyledRouteWrapper>
+            <Page title={'home'} />
+          </StyledRouteWrapper>
+        )}
+      />
+      <Route exact path='/:url' render={routerProps => <Page title={routerProps.match.params.url} />} />
+      {/* <Switch>
+        <Route
+          exact
+          path='/'
+          render={() => (
+            <StyledRouteWrapper>
+              <Page title={'home'} />
+            </StyledRouteWrapper>
+          )}
+        />
+        <Route
+          exact
+          path='/:url'
+          render={routerProps => (
+            <StyledRouteWrapper>
+              <SubNav
+                navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
+                url={routerProps.match.params.url}
+              />
+              <Page title={routerProps.match.params.url} />
+            </StyledRouteWrapper>
+          )}
+        />
+        <Route
+          path='/:url/:type'
+          render={routerProps => (
+            <StyledRouteWrapper>
+              <SubNav
+                navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
+                url={routerProps.match.params.url}
+              />
+              <Page title={`${routerProps.match.params.url}: ${routerProps.match.params.type}`} />
+            </StyledRouteWrapper>
+          )}
+        />
+      </Switch> */}
+    </>
   );
 }
 

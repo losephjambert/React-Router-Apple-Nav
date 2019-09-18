@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter, Route } from 'react-router-dom';
+
+import SubNav from './SubNav';
 
 import { StyledNavWrapper } from './StyledNav';
 const StyledMainNav = styled.div`
@@ -15,16 +17,61 @@ const StyledMainNav = styled.div`
     }
   }
 `;
-export default function MainNav({ mainNavItems }) {
+function MainNav(props) {
+  const [activeId, setActiveId] = useState(3);
+
+  const {
+    mainNavItems,
+    subNavItems,
+    location: { pathname },
+  } = props;
+
+  const handleClick = id => {
+    console.log('handle click', id);
+    setActiveId(id);
+  };
+
   return (
-    <StyledMainNav>
+    <>
+      <StyledMainNav>
+        <StyledNavWrapper>
+          {mainNavItems.map(item => (
+            <NavLink
+              key={item.id}
+              to={`/${item.url.toLowerCase()}`}
+              onClick={() => handleClick(item.id)}
+              className={`${activeId === item.id ? 'active' : null}`}>
+              {item.title}
+            </NavLink>
+          ))}
+        </StyledNavWrapper>
+      </StyledMainNav>
       <StyledNavWrapper>
-        {mainNavItems.map(item => (
-          <NavLink key={item.id} activeClassName='active' to={`/${item.url.toLowerCase()}`}>
-            {item.title}
-          </NavLink>
-        ))}
+        <Route
+          exact
+          path='/:url'
+          render={routerProps => (
+            <SubNav
+              {...routerProps}
+              navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
+              url={routerProps.match.params.url}
+            />
+          )}
+        />
+        <Route
+          exact
+          path='/:url/:type'
+          render={routerProps => (
+            <SubNav
+              {...routerProps}
+              navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
+              url={routerProps.match.params.url}
+            />
+          )}
+        />
       </StyledNavWrapper>
-    </StyledMainNav>
+    </>
   );
 }
+
+export default withRouter(MainNav);
