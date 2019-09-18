@@ -4,7 +4,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import HomePage from './components/HomePage';
 import Page from './components/Page';
-import NavContainer from './components/Nav/NavContainer';
+import NavContainer from './components/Nav/MainNav';
 import SubNav from './components/Nav/SubNav';
 
 import { mainNavItems as main, subNavItems as sub } from './api/navDataStub';
