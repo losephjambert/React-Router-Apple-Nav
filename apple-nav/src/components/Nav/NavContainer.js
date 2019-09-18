@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { NavLink, withRouter, Route } from 'react-router-dom';
+import React from 'react';
+import { withRouter, Route } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import SubNav from './SubNav';
