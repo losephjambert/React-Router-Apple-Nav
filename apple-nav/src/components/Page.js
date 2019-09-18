@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { StyledRouteWrapper } from '../styleComponents/transitions';
-const StyledPageWrapper = styled.div`
-  /* background: salmon; */
-`;
+const StyledPageWrapper = styled.div``;
 
 export default function Page({ title, location }) {
   return (
