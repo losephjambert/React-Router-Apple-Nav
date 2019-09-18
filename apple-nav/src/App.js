@@ -37,15 +37,12 @@ function App() {
         <Route
           path='/:url/:type'
           render={routerProps => (
-            <>
-              <div>stuff</div>
-              <Page
-                mainNavItems={mainNavItems}
-                subNavItems={subNavItems}
-                {...routerProps}
-                title={`${routerProps.match.params.url}: ${routerProps.match.params.type}`}
-              />
-            </>
+            <Page
+              mainNavItems={mainNavItems}
+              subNavItems={subNavItems}
+              {...routerProps}
+              title={`${routerProps.match.params.url}: ${routerProps.match.params.type}`}
+            />
           )}
         />
       </Switch>
