@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const SubNav = ({ items, url }) => {
+const SubNav = ({ navItems, url }) => {
+  if (!navItems) return null;
+
   return (
     <>
-      {items.map((item, i) => (
+      {navItems.items.map((item, i) => (
         <NavLink
           to={`/${url}/${item.title
             .toLowerCase()

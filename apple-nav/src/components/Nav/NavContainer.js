@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Route, NavLink } from 'react-router-dom';
 import SubNav from './SubNav';
 
-export default function NavContainer({ mainNavItems, subNavItems, match }) {
-  const { url } = match.params;
-  const items = subNavItems.find(item => item.url.toLowerCase() === url);
+export default function NavContainer({ mainNavItems }) {
+  // const { url } = match.params;
+  // const items = subNavItems.find(item => item.url.toLowerCase() === url);
   return (
     <>
       <nav>
@@ -15,11 +15,11 @@ export default function NavContainer({ mainNavItems, subNavItems, match }) {
           </NavLink>
         ))}
       </nav>
-      {items && (
+      {/* {items && (
         <nav>
           <Route path={`/${url}`} render={() => <SubNav items={items.items} url={url} />} />
         </nav>
-      )}
+      )} */}
     </>
   );
 }

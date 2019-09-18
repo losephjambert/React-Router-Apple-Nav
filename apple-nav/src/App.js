@@ -5,6 +5,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import HomePage from './components/HomePage';
 import Page from './components/Page';
 import NavContainer from './components/Nav/NavContainer';
+import SubNav from './components/Nav/SubNav';
 
 import { mainNavItems as main, subNavItems as sub } from './api/navDataStub';
 
@@ -22,35 +23,32 @@ function App() {
 
   return (
     <>
+      <NavContainer mainNavItems={mainNavItems} />
       <Switch>
-        <Route
-          exact
-          path='/'
-          render={routerProps => (
-            <HomePage title={'home'} mainNavItems={mainNavItems} subNavItems={subNavItems} {...routerProps} />
-          )}
-        />
+        <Route exact path='/' render={routerProps => <HomePage title={'home'} />} />
         <Route
           exact
           path='/:url'
           render={routerProps => (
-            <Page
-              mainNavItems={mainNavItems}
-              subNavItems={subNavItems}
-              {...routerProps}
-              title={routerProps.match.params.url}
-            />
+            <>
+              <SubNav
+                navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
+                url={routerProps.match.params.url}
+              />
+              <Page title={routerProps.match.params.url} />
+            </>
           )}
         />
         <Route
           path='/:url/:type'
           render={routerProps => (
-            <Page
-              mainNavItems={mainNavItems}
-              subNavItems={subNavItems}
-              {...routerProps}
-              title={`${routerProps.match.params.url}: ${routerProps.match.params.type}`}
-            />
+            <>
+              <SubNav
+                navItems={subNavItems.find(item => item.url.toLowerCase() === routerProps.match.params.url)}
+                url={routerProps.match.params.url}
+              />
+              <Page title={`${routerProps.match.params.url}: ${routerProps.match.params.type}`} />
+            </>
           )}
         />
       </Switch>
