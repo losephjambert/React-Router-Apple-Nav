@@ -15,7 +15,7 @@ const StyledMainNav = styled.div`
     }
   }
 `;
-export default function NavContainer({ mainNavItems }) {
+export default function MainNav({ mainNavItems }) {
   return (
     <StyledMainNav>
       <StyledNavWrapper>

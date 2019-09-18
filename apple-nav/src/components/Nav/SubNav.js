@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { StyledNavWrapper } from './StyledNav';
 const StyledSubNav = styled.div`
   color: #313131;
+  /* transition: 300ms; */
   nav {
     display: flex;
     justify-content: center;

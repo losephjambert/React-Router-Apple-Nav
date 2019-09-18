@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledPageWrapper = styled.div`
-  header {
-  }
-`;
+const StyledPageWrapper = styled.div``;
 
 export default function Page({ title }) {
   return (
