@@ -13,12 +13,4 @@ export const StyledNavWrapper = styled.nav`
   a.active {
     opacity: 0.8;
   }
-
-  &:first-of-type > a:first-child,
-  &:first-of-type > a:last-child {
-    opacity: 1;
-    &:hover {
-      opacity: 0.8;
-    }
-  }
 `;

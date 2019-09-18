@@ -28,7 +28,7 @@ function MainNav(props) {
       <StyledMainNav>
         <StyledNavWrapper>
           {mainNavItems.map(item => (
-            <NavLink key={item.id} to={`/${item.url.toLowerCase()}`} activeClassName={'active'}>
+            <NavLink exact key={item.id} to={`/${item.url.toLowerCase()}`} activeClassName={'active'}>
               {item.title}
             </NavLink>
           ))}
