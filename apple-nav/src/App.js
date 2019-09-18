@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import styled from 'styled-components';
 
 import Page from './components/Page';
-import MainNav from './components/Nav/MainNav';
-import SubNav from './components/Nav/SubNav';
+import NavContainer from './components/Nav/NavContainer';
 
 import { mainNavItems as main, subNavItems as sub } from './api/navDataStub';
 
@@ -14,7 +12,7 @@ function App() {
 
   return (
     <>
-      <MainNav mainNavItems={mainNavItems} subNavItems={subNavItems} />
+      <NavContainer mainNavItems={mainNavItems} subNavItems={subNavItems} />
       <Switch>
         <Route exact path='/' render={({ location }) => <Page title={'home'} location={location} />} />
         <Route
