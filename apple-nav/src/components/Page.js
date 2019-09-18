@@ -1,9 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledPageWrapper = styled.div`
+  header {
+  }
+`;
 
 export default function Page({ title }) {
   return (
-    <>
-      <div>This is the {title} page</div>
-    </>
+    <StyledPageWrapper>
+      <header>
+        <h1>{title}</h1>
+      </header>
+      <main>
+        <p>content and stuff</p>
+      </main>
+      <footer>
+        <p>footer content and stuff</p>
+      </footer>
+    </StyledPageWrapper>
   );
 }
